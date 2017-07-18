@@ -1,0 +1,48 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/template/pagina.xhtml">
+
+	<ui:define name="body">
+		<div class="container">
+			<h1>Salvar Item de Leilão</h1>
+			<h:form>
+				<div class="row">
+					<div class="col-md-5">
+						<h:inputHidden value="#{manterItemLeilao.itemLeilao.codigo}" />
+						<h:outputLabel value="Nome:" />
+						<h:inputText class="form-control"
+							value="#{manterItemLeilao.itemLeilao.nome}" />
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-5">
+						<h:outputLabel value="Descricao: " />
+						<h:inputTextarea class="form-control"
+							value="#{manterItemLeilao.itemLeilao.descricao}" />
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-5">
+						<h:outputLabel value="Data Fim: " />
+						<h:inputText class="form-control date_time" id="dateInput"
+							value="#{manterItemLeilao.itemLeilao.dataFimLance}"
+							converter="#{conveterDate}" converterMessage="Data Incorreta" />
+					</div>
+				</div>
+				<br></br>
+				<div class="row">
+					<div class="col-md-1">
+						<h:commandButton class="btn btn-success"
+							action="#{manterItemLeilao.salvarDadosItemLeilao}" value="Salvar" />
+					</div>
+					<div class="col-md-1">
+						<h:button class="btn btn-default" value="Listar item de Leilão"
+							outcome="listarItemLeilao.xhtml" />
+					</div>
+				</div>
+			</h:form>
+		</div>
+	</ui:define>
+</ui:composition>

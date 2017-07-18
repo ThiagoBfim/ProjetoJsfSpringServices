@@ -1,0 +1,152 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/template/pagina.xhtml">
+
+	<ui:define name="body">
+		<div class="container">
+			<h1>Lista de Itens Leilão</h1>
+			<h:dataTable var="itemLeilao"
+				value="#{manterItemLeilao.listarItemLeilaos}">
+				<h:inputHidden value="#{manterItemLeilao.ItemLeilao.codigo}" />
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Código" />
+					</f:facet>
+					<h:outputText value="#{itemLeilao.codigo}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Nome" />
+					</f:facet>
+					<h:outputText value="#{itemLeilao.nome}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Descrição:" />
+					</f:facet>
+					<h:outputText value="#{itemLeilao.descricao}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Data Fim:" />
+					</f:facet>
+					<h:outputText value="#{itemLeilao.dataFimLance}"
+						converter="#{conveterDate}">
+					</h:outputText>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Alterar" />
+					</f:facet>
+					<h:form>
+						<h:commandButton class="btn btn-default"
+							action="#{manterItemLeilao.prepararAlterarItemLeilao}"
+							value="Alterar" />
+					</h:form>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Excluir" />
+					</f:facet>
+					<h:form>
+						<h:commandButton class="btn btn-danger"
+							action="#{manterItemLeilao.excluirItemLeilao}" value="Excluir" />
+					</h:form>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Realizar lance" />
+					</f:facet>
+					<h:form>
+						<button data-toggle="modal" type="button" class="btn btn-info"
+							onclick="openDialog('#{itemLeilao.codigo}');">Realizar
+							Lance JMS</button>
+					</h:form>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Vizualizar Resultado JMS" />
+					</f:facet>
+					<h:form>
+						<h:commandButton class="btn btn-success"
+							action="#{manterJMSLeilao.getGanhador(itemLeilao.codigo)}"
+							value="Visualizar resultado JMS" />
+					</h:form>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Vizualizar Resultado YAML" />
+					</f:facet>
+					<h:form>
+						<h:commandButton class="btn btn-success"
+							action="#{manterYAMLLeilao.resultadoYAML(itemLeilao.codigo)}"
+							value="Visualizar resultado YAML" />
+					</h:form>
+				</h:column>
+
+			</h:dataTable>
+			<br />
+			<h:button class="btn btn-default" value="Novo Item de Leilão"
+				outcome="salvarItemLeilao.xhtml?faces-redirect=true" />
+		</div>
+		<!-- Modal -->
+		<div class="modal fade" id="myModal" role="dialog">
+			<div class="modal-dialog">
+
+				<!-- Modal content-->
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">x</button>
+						<h4 class="modal-title">Realizar lance</h4>
+					</div>
+					<h:form>
+						<div class="modal-body">
+							<h:inputText class="codLeilaoCotacao"
+								value="#{manterJMSLeilao.cotacao.codItemLeilao}">
+							</h:inputText>
+							<div class="row">
+								<div class="col-md-6">
+									<h:outputLabel value="Nome:" />
+									<h:inputText class="form-control"
+										value="#{manterJMSLeilao.cotacao.cliente.nome}" />
+								</div>
+								<div class="col-md-6">
+									<h:outputLabel value="Senha: " />
+									<h:inputSecret class="form-control"
+										value="#{manterJMSLeilao.cotacao.cliente.senha}" />
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-6">
+									<h:outputLabel value="Valor:" />
+									<h:inputText class="form-control"
+										value="#{manterJMSLeilao.cotacao.valor}" />
+								</div>
+							</div>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default"
+								data-dismiss="modal">Fechar</button>
+							<h:commandButton class="btn btn-success"
+								action="#{manterJMSLeilao.realizarLanceJms}"
+								data-dismiss="modal" value="Realizar Lance" />
+						</div>
+					</h:form>
+				</div>
+
+			</div>
+		</div>
+		<script>
+			function openDialog(value) {
+				var modal = $('#myModal');
+				var codLeilaoCotacao = $('.codLeilaoCotacao');
+				codLeilaoCotacao.val(value);
+				codLeilaoCotacao.hide();
+				modal.modal();
+			};
+		</script>
+	</ui:define>
+</ui:composition>
+

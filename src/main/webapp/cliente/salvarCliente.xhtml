@@ -1,0 +1,41 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/template/pagina.xhtml">
+
+	<ui:define name="body">
+		<div class="container">
+			<h1>Salvar Cliente</h1>
+			<h:form>
+				<div class="row">
+					<div class="col-md-5">
+						<h:inputHidden value="#{manterCliente.cliente.codigo}" />
+						<h:outputLabel value="Nome:" />
+						<h:inputText class="form-control"
+							value="#{manterCliente.cliente.nome}" />
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-3">
+						<h:outputLabel value="Senha:" />
+						<h:inputSecret class="form-control" id="idade"
+							value="#{manterCliente.cliente.senha}"
+							converterMessage="Apenas Numeros Inteiros"></h:inputSecret>
+						<h:message for="senha" />
+					</div>
+				</div>
+				<br></br>
+				<div class="row">
+					<div class="col-md-1">
+						<h:commandButton class="btn btn-success"
+							action="#{manterCliente.salvarDadosClientes}" value="Salvar" />
+					</div>
+					<div class="col-md-1">
+						<h:button class="btn btn-default" value="Listar Clientes" outcome="listarCliente.xhtml" />
+					</div>
+				</div>
+			</h:form>
+		</div>
+	</ui:define>
+</ui:composition>

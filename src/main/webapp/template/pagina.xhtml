@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<link rel="icon" href="favicon.ico"></link>
+	<title>Modulo 2</title>
+
+	<!-- Bootstrap core CSS -->
+	<link href="/resources/css/bootstrap.min.css" rel="stylesheet" />
+	<h:outputStylesheet library="css" name="bootstrap.min.css" />
+	<h:outputStylesheet library="css" name="dashboard.css" />
+</h:head>
+
+
+<h:body>
+	<!-- 	Header -->
+	<ui:include src="/template/cabecalho.xhtml" />
+
+	<div class="container">
+		<h:messages id="message" autoUpdate="true" closable="true"
+			style="color:red" />
+	</div>
+
+
+	<!-- 		Body -->
+	<ui:insert name="body" />
+
+	<!-- Footer -->
+	<ui:include src="/template/rodape.xhtml" />
+
+	<script type="text/javascript"
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js" />
+	<h:outputScript library="js" name="bootstrap.min.js"></h:outputScript>
+	<h:outputScript library="js" name="jquery.mask.min.js"></h:outputScript>
+	<h:outputScript library="js" name="mask.js"></h:outputScript>
+</h:body>
+
+</html>

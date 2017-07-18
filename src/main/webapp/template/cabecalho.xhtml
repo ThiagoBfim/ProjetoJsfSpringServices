@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition>
+	<div class="container">
+		<div class="navbar navbar-inverse ">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="/console">H2</a> <a
+					class="navbar-brand" href="/index.xhtml">Inicio</a>
+			</div>
+			<div id="navbar" class="navbar-collapse collapse">
+				<h:form>
+					<ul class="nav navbar-nav navbar-right">
+						<li><h:link value="Cadastrar Cliente"
+								outcome="/cliente/salvarCliente.xhtml?faces-redirect=true" /></li>
+						<li><h:link value="Listar Cliente"
+								outcome="/cliente/listarCliente.xhtml" /></li>
+						<li><h:link value="Cadastrar Item Leilão"
+								outcome="/itemLeilao/salvarItemLeilao.xhtml?faces-redirect=true" /></li>
+						<li><h:link value="Listar Item Leilão"
+								outcome="/itemLeilao/listarItemLeilao.xhtml" /></li>
+					</ul>
+				</h:form>
+			</div>
+		</div>
+	</div>
+</ui:composition>
+
+</html>
+
