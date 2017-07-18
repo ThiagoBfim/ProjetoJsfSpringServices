@@ -1,0 +1,27 @@
+# Eclipse
+.classpath
+.project
+.settings/
+
+# Intellij
+.idea/
+*.iml
+*.iws
+
+# Mac
+.DS_Store
+
+# Maven
+log/
+target/
+out/
+classes/
+*.class
+*.metadata/
+.gitignore.swp
+
+##Others
+*.rebel.xml
+rebel.xml
+*.context.xml
+src/main/webapp/META-INF/
